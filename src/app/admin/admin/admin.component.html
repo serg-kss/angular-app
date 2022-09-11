@@ -1,0 +1,27 @@
+<div><h1 class="text-3xl font-sans text-center">Admin Panel:</h1></div>
+<div class="mb-4 border-b border-gray-200 mt-5">
+   <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+       <li class="mr-2">
+           <button [ngClass]="'inline-block p-4 rounded-t-lg border-b-2 ' + getClasses_1()"     
+           type="button"                       
+           (click)="change_status()">Products</button>
+       </li>
+       <li class="mr-2" >
+           <button [ngClass]="'inline-block p-4 rounded-t-lg border-b-2 ' + getClasses_2()" 
+           type="button" 
+           (click)="change_status()">Orders</button>
+       </li>
+
+   </ul>
+</div>
+<div>
+   <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800"
+        *ngIf="products_field">
+            <app-goods></app-goods>  
+   </div>
+   <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" 
+        *ngIf="orders_field">
+            <app-orders></app-orders>
+   </div>
+   
+</div>

@@ -1,0 +1,102 @@
+
+<div *ngIf="orderSent" class="flex-auto">
+   <h2>Thanks!</h2>
+   <p>Thanks for placing your order.</p>
+   <p>We'll ship your goods as soon as possible.</p>
+   <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 " 
+           routerLink="/">Return to Store
+   </button>
+</div>
+
+<form *ngIf="!orderSent" #form="ngForm" novalidate
+   (ngSubmit)="submitOrder(form)">
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">
+         Name
+      </label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"              
+             name="name"
+             [(ngModel)]="order.name"
+             #name="ngModel" 
+             required
+             minlength="10"
+             pattern="^[A-Za-z ]+$"/>
+      
+      <ul class="text-red-600" *ngIf="name.dirty && name.invalid">
+         <li *ngIf="name.errors?.required">
+            You must enter your name!
+         </li>
+         <li *ngIf="name.errors?.pattern">
+            Please, use Roman alphabet and only letters. Thank You! But not this: {{name.errors?.pattern.actualValue}}
+         </li>
+         <li *ngIf="name.errors?.minlength">
+            Name must be at least
+            {{name.errors?.minlength.requiredLength}} characters You just put {{name.errors?.minlength.actualLength}}      
+         </li>
+      </ul>    
+   </div>
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Address</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             #address="ngModel" 
+             name="address"
+             [(ngModel)]="order.address" 
+             required />
+      <span *ngIf="submitted && address.invalid" class="text-red-600">
+         Please enter your address
+      </span>
+   </div>
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">City</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             #city="ngModel" name="city"
+             [(ngModel)]="order.city" 
+             required />
+      <span *ngIf="submitted && city.invalid" class="text-red-600">
+         Please enter your city
+      </span>
+   </div>
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">State</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             #state="ngModel" 
+             name="state"
+             [(ngModel)]="order.state" 
+             required />
+      <span *ngIf="submitted && state.invalid" class="text-red-600">
+         Please enter your state
+      </span>
+   </div>
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Zip/Postal Code</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+             #zip="ngModel" 
+             name="zip"
+             [(ngModel)]="order.zip" 
+             required />
+      <span *ngIf="submitted && zip.invalid" class="text-red-600">
+         Please enter your zip/postal code
+      </span>
+   </div>
+   <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Country</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+             #country="ngModel" 
+             name="country"
+             [(ngModel)]="order.country" 
+             required />
+      <span *ngIf="submitted && country.invalid" class="text-red-600">
+         Please enter your country
+      </span>
+   </div>
+   <div class="text-xs-center">
+      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+              routerLink="/cart">
+              Back
+      </button>
+      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 " 
+              type="submit">
+              Complete Order
+      </button>
+   </div>
+</form>

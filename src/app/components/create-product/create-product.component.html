@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+   <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  
+          type="text" 
+          placeholder="Product name"
+          formControlName = "title"
+          appFocus
+   >
+   <p class="text-red-600 font-mono mb-1"
+      *ngIf="title.errors?.minlength && title.touched"
+   >Error: Too small:)</p>
+   <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-3" type="submit">
+      Add
+   </button>
+</form>

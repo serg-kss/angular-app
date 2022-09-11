@@ -1,0 +1,33 @@
+<div class="mt-5 mb-5 grid grid-cols-6 gap-4">
+
+   <div class="col-start-2 col-span-4">
+      <h2>IShop Admin</h2>
+   </div>
+
+   <div class="col-start-2 col-span-4">
+      <form novalidate #form="ngForm" (ngSubmit)="authenticate(form)">
+         <div class="mb-6">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                  name="username"
+                  type="email"
+                  [(ngModel)]="username" 
+                  required />
+         </div>
+         <div class="mb-6">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  type="password" 
+                  name="password"
+                  [(ngModel)]="password" 
+                  required />
+         </div>
+         <div class="flex justify-center">
+            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" routerLink="/">Go back</button>
+            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-4"
+                    type="submit">Log In
+            </button>
+         </div>
+      </form>
+   </div>
+</div>
