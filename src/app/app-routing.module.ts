@@ -1,7 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin/admin.component';
+import { AuthGuard } from './admin/auth. guard';
+import { AuthComponent } from './admin/auth/auth.component';
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { SingleProductComponent } from './pages/single-product/single-product.component';
+import { ProductFirstGuard } from './productFirst.guard';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: ProductPageComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'single_product', component: SingleProductComponent, canActivate: [ProductFirstGuard]},
+  {path: 'cart', component: CartDetailComponent, canActivate: [ProductFirstGuard]},
+  {path: 'checkout', component: CheckoutComponent, canActivate: [ProductFirstGuard]},
+  {path: 'auth', component: AuthComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: '**', redirectTo: ''} 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
