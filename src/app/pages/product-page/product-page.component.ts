@@ -16,8 +16,6 @@ export class ProductPageComponent implements OnInit {
   term = ''
   
 
-  
-
   constructor(
     public productService:ProductService,
     public modalService: ModalService,
@@ -27,6 +25,7 @@ export class ProductPageComponent implements OnInit {
     this.loading = true
     this.productService.getAll().subscribe(() =>{
       this.loading = false
+      
     })
    
   }

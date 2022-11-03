@@ -10,18 +10,38 @@
    </div>
    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
      <div class="text-sm lg:flex-grow">
-       <a routerLink="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white hover:underline mr-4 ">
+       <a routerLink="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white hover:underline mr-4 "
+       (click)="showCategories()">
          Products
        </a>
        <a routerLink="/about" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white hover:underline">
          About
        </a>
      </div>
-     <div>
-       <a routerLink="/" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+     
+     
+     <div *ngIf="cart.lines.length > 0">
+       <a routerLink="/cart" 
+          class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+          Card 
+          <span 
+            class="font-bold text-orange-600">{{cart.lines.length}}
+          </span>
+       </a>
      </div>
-     <div>
-      <a routerLink="/auth" class="ml-3 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Admin</a>
-    </div>
-   </div>
+     <div *ngIf="cart.lines.length == 0">
+       <a routerLink="/" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Card</a>
+     </div>
+     <div *ngIf="!productService.is_admin">
+       <a routerLink="/auth" class="ml-3 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+     </div>
+     <div *ngIf="productService.is_admin">
+       <a routerLink="/admin" class="ml-3 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Admin</a>
+       <a routerLink="/" class="ml-3 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+          (click)="logOut()">Log out</a>
+     </div>    
+  </div>
  </nav>
+  
+         
+  

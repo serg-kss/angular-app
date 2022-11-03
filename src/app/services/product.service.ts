@@ -21,7 +21,7 @@ export class ProductService{
    products: IProduct[]=[]
    product: IProduct
    auth_token: string
-   is_admin: boolean
+   is_admin: boolean  = false
 
 
    authenticate(user: string, pass: string):Observable<AuthToken>{

@@ -29,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { GoodsComponent } from './admin/goods/goods.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -53,14 +54,15 @@ import { UpdateProductComponent } from './components/update-product/update-produ
     AdminComponent,
     GoodsComponent,
     OrdersComponent,
-    UpdateProductComponent   
+    UpdateProductComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule    
   ],
   providers: [Cart, ProductFirstGuard, OrderRepository, Order, AuthService,UpdateProductComponent],
   bootstrap: [AppComponent]
