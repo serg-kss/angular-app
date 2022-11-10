@@ -1,30 +1,110 @@
 import { Component } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Cart } from 'src/app/models/cart.model';
 import { Order } from 'src/app/models/order.model';
 import { OrderRepository } from 'src/app/models/order.repository';
-
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent {
-
   orderSent: boolean = false;
   submitted: boolean = false;
+  delivery: string[] = ['From shop', 'New Post delivery'];
+  payment_type: string[] = ['In shop', 'By card now'];
+  payment_type_post: string = 'On post';
+  payment_method: boolean = false;
+  name: string;
+  phone: string;
+  deliveries: string;
+  post_data: string = '';
+  goods: string = '';
+  order_num: number = 1;
+  new_post: boolean = false;
+  city_choosen: boolean = false;
+  endpoint_choosen: boolean = false;
 
-  constructor(public repository: OrderRepository, public order: Order) { }
+  constructor(
+    public repository: OrderRepository,
+    public order: Order,
+    public cart: Cart,
+    public productService: ProductService
+  ) {}
 
-  submitOrder(form: NgForm) {
-    this.submitted = true;
-    if (form.valid) {
-      this.repository.saveOrder(this.order).subscribe(() => {
-        this.order.clear();
-        this.orderSent = true;
-        this.submitted = false;
-      });
+
+  form = new FormGroup({
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(50),
+    ]),
+    phone: new FormControl('', [Validators.required]),
+    state: new FormControl(),
+  });
+
+  formCity = new FormGroup({
+    city: new FormControl('', [
+      Validators.required,
+    ])
+  });
+  formPost = new FormGroup({
+    endpoint: new FormControl('', [
+      Validators.required,
+    ])
+  });
+  formPayment = new FormGroup({
+    payment: new FormControl('', [
+      Validators.required,
+    ])
+  });
+
+  onSubmit() {
+
+    this.name = this.form.value.name as string;
+    this.phone = this.form.value.phone as string;
+    this.deliveries = this.form.value.state as string;
+    console.log(this.name);
+    console.log(this.phone);
+    console.log(this.deliveries);
+
+    for(let i =0; i<this.cart.lines.length; i++){
+      this.goods = this.goods + this.cart.lines[i].product.title + "  Units:" + this.cart.lines[i].quantity +"; "+this.cart.lines[i].lineTotal+"; ";
     }
+    this.goods = this.goods + this.cart.cartPrice;
+    console.log(this.goods);
+
+    if (this.deliveries == this.delivery[0]) {
+      this.payment_method = true;
+    } else if (this.deliveries == this.delivery[1]){
+      this.new_post = true;
+    }   
   }
 
+  onSubmitCity(){
+    this.city_choosen = true;
+
+  }
+  onSubmitPost(){
+    this.endpoint_choosen = true;
+    this.payment_method = true;
+  }
+  onSubmitCreateOrder(){
+    
+    this.productService.saveOrder({
+      order_num: this.order_num,
+      name: this.name,
+      phone: this.phone,
+      method: this.deliveries,
+      post_data: this.post_data,
+      goods: this.goods
+    }).subscribe(()=>{
+      this.orderSent = true;
+      this.submitted = false;
+      this.cart.clear();
+    })
+
+  }
 }

@@ -1,102 +1,190 @@
-
 <div *ngIf="orderSent" class="flex-auto">
-   <h2>Thanks!</h2>
-   <p>Thanks for placing your order.</p>
-   <p>We'll ship your goods as soon as possible.</p>
-   <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 " 
-           routerLink="/">Return to Store
-   </button>
+  <h2>Thanks!</h2>
+  <p>Thanks for placing your order.</p>
+  <p>We'll ship your goods as soon as possible.</p>
+  <button
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+    routerLink="/"
+  >
+    Return to Store
+  </button>
 </div>
 
-<form *ngIf="!orderSent" #form="ngForm" novalidate
-   (ngSubmit)="submitOrder(form)">
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">
-         Name
-      </label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"              
-             name="name"
-             [(ngModel)]="order.name"
-             #name="ngModel" 
-             required
-             minlength="10"
-             pattern="^[A-Za-z ]+$"/>
-      
-      <ul class="text-red-600" *ngIf="name.dirty && name.invalid">
-         <li *ngIf="name.errors?.required">
-            You must enter your name!
-         </li>
-         <li *ngIf="name.errors?.pattern">
-            Please, use Roman alphabet and only letters. Thank You! But not this: {{name.errors?.pattern.actualValue}}
-         </li>
-         <li *ngIf="name.errors?.minlength">
-            Name must be at least
-            {{name.errors?.minlength.requiredLength}} characters You just put {{name.errors?.minlength.actualLength}}      
-         </li>
-      </ul>    
-   </div>
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">Address</label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-             #address="ngModel" 
-             name="address"
-             [(ngModel)]="order.address" 
-             required />
-      <span *ngIf="submitted && address.invalid" class="text-red-600">
-         Please enter your address
-      </span>
-   </div>
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">City</label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-             #city="ngModel" name="city"
-             [(ngModel)]="order.city" 
-             required />
-      <span *ngIf="submitted && city.invalid" class="text-red-600">
-         Please enter your city
-      </span>
-   </div>
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">State</label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-             #state="ngModel" 
-             name="state"
-             [(ngModel)]="order.state" 
-             required />
-      <span *ngIf="submitted && state.invalid" class="text-red-600">
-         Please enter your state
-      </span>
-   </div>
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">Zip/Postal Code</label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-             #zip="ngModel" 
-             name="zip"
-             [(ngModel)]="order.zip" 
-             required />
-      <span *ngIf="submitted && zip.invalid" class="text-red-600">
-         Please enter your zip/postal code
-      </span>
-   </div>
-   <div class="mb-6">
-      <label class="block mb-2 text-sm font-medium text-gray-900">Country</label>
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-             #country="ngModel" 
-             name="country"
-             [(ngModel)]="order.country" 
-             required />
-      <span *ngIf="submitted && country.invalid" class="text-red-600">
-         Please enter your country
-      </span>
-   </div>
-   <div class="text-xs-center">
-      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 "
-              routerLink="/cart">
-              Back
+
+<section *ngIf="!orderSent">
+  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+      New Oreder Details:
+    </h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+
+        <div class="sm:col-span-2">
+          <ul>
+            <li *ngFor="let item of cart.lines; index as i">
+              <span>{{ cart.lines[i].product.title }}</span
+              ><br />
+              <span>Units: {{ cart.lines[i].quantity }} - </span>
+              <span>{{ cart.lines[i].lineTotal }} USD</span>
+            </li>
+          </ul>
+          <hr />
+          <span class="font-semibold mt-1">Total: {{ cart.cartPrice }}</span>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Name</label
+          >
+          <input
+            name="name"
+            type="text"
+            formControlName = "name"
+            placeholder="Thomas Patrick Iggan"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            required
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="brand"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Phone</label
+          >
+          <input
+            type="text"
+            name="phone"
+            formControlName = "phone"          
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="+38(0XX)XXX-XX-XX"
+            required
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="category"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Delivery method</label
+          >
+          <select
+            id="category"
+            formControlName = "state"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          >  
+            <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>       
+      </div>
+      <button
+        *ngIf="!new_post && !payment_method"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+        routerLink="/cart"
+      >
+      Back to cart
       </button>
-      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 " 
-              type="submit">
-              Complete Order
+      <button
+        *ngIf="!new_post && !payment_method"
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      >
+        Continue
       </button>
-   </div>
-</form>
+    </form>
+
+
+    <form *ngIf="new_post" [formGroup]="formCity" (ngSubmit)="onSubmitCity()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2" >
+          <label            
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Choose city</label
+          >
+          <select            
+            formControlName = "city"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          >  
+            <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>      
+      </div>
+    <button
+      *ngIf="!city_choosen"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      routerLink="/cart"
+    >
+    Back to cart
+    </button>
+    <button
+    *ngIf="!city_choosen"
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+    >
+      Continue
+    </button>
+
+
+    </form>
+    <form *ngIf="city_choosen" [formGroup]="formPost" (ngSubmit)="onSubmitPost()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <label            
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Choose endpoint</label
+          >
+          <select            
+            formControlName = "endpoint"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          >  
+            <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
+          </select>
+        </div>
+      </div>
+    <button
+      *ngIf="!endpoint_choosen"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      routerLink="/cart"
+    >
+    Back to cart
+    </button>
+    <button
+    *ngIf="!endpoint_choosen"
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+    >
+      Continue
+    </button>
+    </form>
+
+
+    <form *ngIf="payment_method" [formGroup]="formPayment" (ngSubmit)="onSubmitCreateOrder()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <label            
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Choose payment method</label
+          >
+          <select            
+            formControlName = "payment"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          >  
+            <option *ngFor="let state of payment_type" [ngValue]="state">{{state}}</option>
+            <option *ngIf="new_post" [ngValue]="payment_type_post">{{payment_type_post}}</option>
+          </select>
+        </div>
+      </div>
+    <button
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      routerLink="/cart"
+    >
+      Back to cart
+    </button>
+    <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+    >
+      Create order
+    </button>
+    </form>
+  </div>
+</section>
