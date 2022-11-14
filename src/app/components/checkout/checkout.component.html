@@ -104,19 +104,19 @@
             formControlName = "city"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
           >  
-            <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
+            <option *ngFor="let state of delivery_data.cities" [ngValue]="state">{{state}}</option>
           </select>
         </div>      
       </div>
     <button
-      *ngIf="!city_choosen"
+      *ngIf="!city_chosen"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
       routerLink="/cart"
     >
     Back to cart
     </button>
     <button
-    *ngIf="!city_choosen"
+    *ngIf="!city_chosen"
       type="submit"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
     >
@@ -125,7 +125,7 @@
 
 
     </form>
-    <form *ngIf="city_choosen" [formGroup]="formPost" (ngSubmit)="onSubmitPost()">
+    <form *ngIf="city_chosen" [formGroup]="formPost" (ngSubmit)="onSubmitPost()">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div class="sm:col-span-2">
           <label            
@@ -136,7 +136,7 @@
             formControlName = "endpoint"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
           >  
-            <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
+            <option *ngFor="let state of delivery_data.endpoints" [ngValue]="state">{{state}}</option>
           </select>
         </div>
       </div>

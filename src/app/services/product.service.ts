@@ -108,14 +108,14 @@ export class ProductService {
    }*/
 
   saveOrder(order: Delivery): Observable<Delivery> {
-   // return this.http.post<Order>(
-   //   'http://localhost:8080/api/create-order',
-   //   order
-   // );
-   console.log(order);
-   return new Observable(observer => {
-      observer.next(order);
-   })
+    return this.http.post<Delivery>(
+      'http://localhost:8080/api/create-order',
+      order
+    );
+   //console.log(order);
+  // return new Observable(observer => {
+   //   observer.next(order);
+   //})
   }
 
   private errorHandler(error: HttpErrorResponse) {
