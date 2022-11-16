@@ -45,7 +45,7 @@ export class Cart {
      
    } 
    clear(){
-      this.lines = []
+      this.lines = [];
    }
 }
 

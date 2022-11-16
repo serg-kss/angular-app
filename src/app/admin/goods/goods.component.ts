@@ -11,8 +11,8 @@ import { UpdateProductComponent } from 'src/app/components/update-product/update
 })
 export class GoodsComponent implements OnInit {
 
-  list_of_products: IProduct[] = []
-  loading: boolean = false
+  list_of_products: IProduct[] = [];
+  loading: boolean = false;
 
   constructor(
     public productService: ProductService, 
@@ -20,23 +20,21 @@ export class GoodsComponent implements OnInit {
     public updateProductComponent: UpdateProductComponent) { }
 
   ngOnInit(): void {
-    this.loading = true
-    this.getProducts()
+    this.loading = true;
+    this.getProducts();
   }
 
   getProducts(){
     this.productService.getAll().subscribe(()=>{
-      this.loading = false
+      this.loading = false;
     })
-    this.list_of_products = this.productService.products
+    this.list_of_products = this.productService.products;
   }
 
   delete(id:any){
-    this.productService.delete(id)
-    this.loading = true
-    this.getProducts()
+    this.productService.delete(id);
+    this.loading = true;
+    this.getProducts();
   }
     
-  
-
 }

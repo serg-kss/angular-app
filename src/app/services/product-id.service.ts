@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ProductIdService {
 
-  productId:number = 0
+  productId: number = 0;
 
   setProductId(id:any) { 
-    this.productId = id
+    this.productId = id;
   }
 }

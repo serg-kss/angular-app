@@ -14,7 +14,7 @@ export class AuthComponent {
 
   public username: string;
   public password: string;
-  public errorMessage: any = null
+  public errorMessage: any = null;
 
   constructor(
     private router: Router, 
@@ -26,7 +26,6 @@ export class AuthComponent {
     if (form.valid) {
       this.auth.authenticate(this.username, this.password).subscribe(
         () => {
-          console.log(this.productService.is_admin)
           if (this.productService.is_admin) {
             this.router.navigateByUrl("/admin");
           }

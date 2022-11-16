@@ -9,10 +9,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class NavigationComponent implements OnInit {
 
-  categories: boolean = false
+  categories: boolean = false;
  
-
-
   constructor(public cart: Cart,
     public productService: ProductService) { }
 
@@ -20,16 +18,15 @@ export class NavigationComponent implements OnInit {
   }
 
   logOut (){
-    this.productService.is_admin = false
+    this.productService.is_admin = false;
   }
 
   showCategories(){
     if(this.categories){
-      this.categories = false
+      this.categories = false;
     } else if (!this.categories){
-      this.categories = true
+      this.categories = true;
     }
   }
  
-
 }

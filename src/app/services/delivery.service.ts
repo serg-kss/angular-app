@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class DeliveryService {
 
-  cities: string[] = ['London', 'Dublin', 'Amsterdam', 'Odessa']
-  endpoints: string[] = ['#21', '#15', '#33']
+  cities: string[] = ['London', 'Dublin', 'Amsterdam', 'Odessa'];
+  endpoints: string[] = ['#21', '#15', '#33'];
 
   constructor() { }
 

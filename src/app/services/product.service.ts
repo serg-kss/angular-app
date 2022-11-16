@@ -7,7 +7,6 @@ import {
 } from '@angular/common/http';
 import { catchError, retry, tap, throwError, Observable } from 'rxjs';
 import { ErrorService } from './error.service';
-import { Order } from '../models/order.model';
 import { AuthToken } from '../models/token';
 import { Delivery } from '../models/delivery';
 
@@ -107,16 +106,37 @@ export class ProductService {
       })
    }*/
 
+  getAllOrders(): Observable<Delivery[]> {
+    return this.http
+      .get<Delivery[]>('http://localhost:8080/api/orders', {
+        params: new HttpParams({
+          fromObject: { limit: 1000 },
+        }),
+      })
+      .pipe(
+        retry(2),
+        catchError(this.errorHandler.bind(this))
+      );
+  } 
+
   saveOrder(order: Delivery): Observable<Delivery> {
     return this.http.post<Delivery>(
       'http://localhost:8080/api/create-order',
       order
-    );
-   //console.log(order);
-  // return new Observable(observer => {
-   //   observer.next(order);
-   //})
+    ).pipe(
+      retry(2),
+      catchError(this.errorHandler.bind(this))
+    );   
   }
+ /* saveOrder(order: Delivery){
+    fetch('http://localhost:8080/api/create-order', {
+      method: 'POST',
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  }*/
+
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message);

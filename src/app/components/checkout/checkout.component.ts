@@ -22,10 +22,8 @@ export class CheckoutComponent {
   name: string;
   phone: string;
   deliveries: string;
-
   city_form: string;
   endpoint:string;
-
   post_data: string = '';
   goods: string = '';
   order_num: number = 1;
@@ -40,7 +38,10 @@ export class CheckoutComponent {
     public productService: ProductService,
     public delivery_data: DeliveryService
   ) {
-    this.delivery_data.get_all_cities()
+    this.productService.getAllOrders().subscribe((response)=>{ 
+      this.order_num = response.length;
+    })
+    //this.delivery_data.get_all_cities()
   }
 
   form = new FormGroup({
@@ -67,9 +68,6 @@ export class CheckoutComponent {
     this.name = this.form.value.name as string;
     this.phone = this.form.value.phone as string;
     this.deliveries = this.form.value.state as string;
-    console.log(this.name);
-    console.log(this.phone);
-    console.log(this.deliveries);
 
     for (let i = 0; i < this.cart.lines.length; i++) {
       this.goods =
@@ -77,12 +75,10 @@ export class CheckoutComponent {
         this.cart.lines[i].product.title +
         '  Units:' +
         this.cart.lines[i].quantity +
-        '; ' +
-        this.cart.lines[i].lineTotal +
-        '; ';
+        ';' +
+        this.cart.lines[i].lineTotal;
     }
-    this.goods = this.goods + this.cart.cartPrice;
-    console.log(this.goods);
+    this.goods = this.goods + this.cart.cartPrice + '; ';
 
     if (this.deliveries == this.delivery[0]) {
       this.payment_method = true;
@@ -110,8 +106,9 @@ export class CheckoutComponent {
         method: this.deliveries,
         post_data: this.post_data + ' ' + this.city_form + ' ' + this.endpoint + ' ' + this.chosen_payment,
         goods: this.goods,
-      })
-      .subscribe(() => {
+        amount: this.cart.cartPrice.toString()
+      }) 
+      .subscribe(() => {     
         this.orderSent = true;
         this.submitted = false;
         this.cart.clear();

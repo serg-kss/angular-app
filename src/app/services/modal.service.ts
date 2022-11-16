@@ -6,23 +6,23 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ModalService {
 
-  isVisible$ = new BehaviorSubject<boolean>(false)
-  itemAdd$ = new BehaviorSubject<boolean>(false)
+  isVisible$ = new BehaviorSubject<boolean>(false);
+  itemAdd$ = new BehaviorSubject<boolean>(false);
 
   open() { 
-    this.isVisible$.next(true)
+    this.isVisible$.next(true);
   }
 
   close() { 
-    this.isVisible$.next(false)
+    this.isVisible$.next(false);
   }
 
   showToast() { 
-    this.itemAdd$.next(true)
+    this.itemAdd$.next(true);
   }
 
   hideToast() { 
-    this.itemAdd$.next(false)
+    this.itemAdd$.next(false);
   }
 
 }

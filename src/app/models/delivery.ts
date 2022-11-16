@@ -5,4 +5,5 @@ export interface Delivery {
    method: string
    post_data?: string
    goods: string
+   amount: string
 }

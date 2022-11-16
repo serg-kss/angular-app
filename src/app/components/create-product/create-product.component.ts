@@ -43,8 +43,8 @@ export class CreateProductComponent implements OnInit {
         count: 3
      }
     }).subscribe(()=>{
-      this.modalService.showToast()
-      this.modalService.close()     
+      this.modalService.showToast();
+      this.modalService.close();   
     })
   }
 

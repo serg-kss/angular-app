@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit{
-  id:number
+  id:number;
 
   constructor(
     public productService: ProductService,
@@ -43,7 +43,6 @@ export class UpdateProductComponent implements OnInit{
 
 
   onSubmit(){
-    console.log(this.form.value)
    
     this.productService.update(this.id, {
       title: this.form.value.title as string,
@@ -52,8 +51,8 @@ export class UpdateProductComponent implements OnInit{
       image: this.form.value.image as string,
       category: this.form.value.category as string     
     })
-    this.modalService.showToast()
-    this.modalService.close()     
+    this.modalService.showToast();
+    this.modalService.close();   
     
   }
 

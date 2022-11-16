@@ -10,9 +10,9 @@ export class ProductComponent{
 
    @Input() product: IProduct
 
-   details = false
-   show_details = 'Show details'
-   hide_details = 'Hide details'
+   details = false;
+   show_details = 'Show details';
+   hide_details = 'Hide details';
 
    constructor(
       public productId: ProductIdService, 
