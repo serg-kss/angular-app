@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { appearance } from 'src/app/animations/appearance';
 import { Cart } from 'src/app/models/cart.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -6,27 +7,16 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
+  animations: [appearance]
 })
 export class NavigationComponent implements OnInit {
+  links: string[] = ['Home', 'Goods', 'About Us', 'Contacts'];
 
-  categories: boolean = false;
- 
-  constructor(public cart: Cart,
-    public productService: ProductService) { }
+  constructor(public cart: Cart, public productService: ProductService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  logOut (){
+  logOut() {
     this.productService.is_admin = false;
   }
-
-  showCategories(){
-    if(this.categories){
-      this.categories = false;
-    } else if (!this.categories){
-      this.categories = true;
-    }
-  }
- 
 }
