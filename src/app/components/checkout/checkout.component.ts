@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { appearance } from 'src/app/animations/appearance';
+import {
+  button_classes,
+  label_classes,
+  select_classes,
+} from 'src/app/data/styles-data';
 import { Cart } from 'src/app/models/cart.model';
 import { Order } from 'src/app/models/order.model';
 import { OrderRepository } from 'src/app/models/order.repository';
@@ -10,6 +16,7 @@ import { ProductService } from 'src/app/services/product.service';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
+  animations: [appearance],
 })
 export class CheckoutComponent {
   orderSent: boolean = false;
@@ -23,13 +30,18 @@ export class CheckoutComponent {
   phone: string;
   deliveries: string;
   city_form: string;
-  endpoint:string;
+  endpoint: string;
   post_data: string = '';
   goods: string = '';
   order_num: number = 1;
   new_post: boolean = false;
   city_chosen: boolean = false;
   endpoint_choosen: boolean = false;
+
+  select_classes: string = select_classes;
+  select_classes_anim_left: string = ' animate__animated animate__backInLeft';
+  label_classes: string = label_classes;
+  button_classes: string = button_classes;
 
   constructor(
     public repository: OrderRepository,
@@ -38,9 +50,9 @@ export class CheckoutComponent {
     public productService: ProductService,
     public delivery_data: DeliveryService
   ) {
-    this.productService.getAllOrders().subscribe((response)=>{ 
+    this.productService.getAllOrders().subscribe((response) => {
       this.order_num = response.length;
-    })
+    });
     //this.delivery_data.get_all_cities()
   }
 
@@ -104,11 +116,18 @@ export class CheckoutComponent {
         name: this.name,
         phone: this.phone,
         method: this.deliveries,
-        post_data: this.post_data + ' ' + this.city_form + ' ' + this.endpoint + ' ' + this.chosen_payment,
+        post_data:
+          this.post_data +
+          ' ' +
+          this.city_form +
+          ' ' +
+          this.endpoint +
+          ' ' +
+          this.chosen_payment,
         goods: this.goods,
-        amount: this.cart.cartPrice.toString()
-      }) 
-      .subscribe(() => {     
+        amount: this.cart.cartPrice.toString(),
+      })
+      .subscribe(() => {
         this.orderSent = true;
         this.submitted = false;
         this.cart.clear();

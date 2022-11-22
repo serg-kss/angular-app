@@ -1,37 +1,37 @@
 <header>
   <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="https://flowbite.com" class="flex items-center">
-              <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          <a routerLink="/" class="flex items-center">
+              <img src="../../../assets/angular-icon.svg" class="animate__animated animate__bounceInRight mr-3 h-6 sm:h-9" alt="Angular Logo" />
+              <span class="animate__animated animate__flipInX self-center text-xl font-semibold whitespace-nowrap dark:text-white">Angular</span>
           </a>
           <div class="flex items-center lg:order-2">
               
             <div *ngIf="cart.lines.length > 0">
-              <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              <button type="button" [ngClass]="buttons_class">
                 <a routerLink="/cart">               
                 Card 
                 <span 
-                  class="font-bold text-orange-600">{{cart.lines.length}}
+                  class="font-bold text-orange-600 ">{{cart.lines.length}}
                 </span>
              </a>
               </button>
             </div>
             <div *ngIf="cart.lines.length == 0">
-              <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              <button type="button" [ngClass]="buttons_class">
                 <a routerLink="/">Card</a>
               </button>
             </div>
             <div *ngIf="!productService.is_admin">
-              <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              <button type="button" [ngClass]="buttons_class">
                 <a routerLink="/auth">Login</a>
               </button>
             </div>
             <div *ngIf="productService.is_admin">
-              <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              <button type="button" [ngClass]="buttons_class">
                 <a routerLink="/admin">Admin</a>
               </button>
-              <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              <button type="button" [ngClass]="buttons_class">
                 <a routerLink="/" (click)="logOut()">Log out</a>
               </button>
             </div>  
@@ -43,8 +43,8 @@
           </div>
           <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
               <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                  <li @appearance *ngFor="let item of links">
-                      <a routerLink="" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">{{item}}</a>
+                  <li @appearance *ngFor="let link of links; let i=index;">
+                      <a [routerLink]="links_routes[i]" [ngClass]="getClasses()" aria-current="page">{{link}}</a>
                   </li>
               </ul>
           </div>

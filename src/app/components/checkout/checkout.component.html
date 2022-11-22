@@ -3,7 +3,7 @@
   <p>Thanks for placing your order.</p>
   <p>We'll ship your goods as soon as possible.</p>
   <button
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+    [ngClass]="button_classes"
     routerLink="/"
   >
     Return to Store
@@ -13,13 +13,13 @@
 
 <section *ngIf="!orderSent">
   <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    <h2 @appearance class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
       New Oreder Details:
     </h2>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
-        <div class="sm:col-span-2">
+        <div @appearance class="sm:col-span-2">
           <ul>
             <li *ngFor="let item of cart.lines; index as i">
               <span>{{ cart.lines[i].product.title }}</span
@@ -34,7 +34,7 @@
         <div class="sm:col-span-2">
           <label
             for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            [ngClass]="label_classes"
             >Name</label
           >
           <input
@@ -42,21 +42,21 @@
             type="text"
             formControlName = "name"
             placeholder="Thomas Patrick Iggan"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes"
             required
           />
         </div>
         <div class="w-full">
           <label
             for="brand"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            [ngClass]="label_classes"
             >Phone</label
           >
           <input
             type="text"
             name="phone"
             formControlName = "phone"          
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes"
             placeholder="+38(0XX)XXX-XX-XX"
             required
           />
@@ -64,13 +64,13 @@
         <div class="w-full">
           <label
             for="category"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            [ngClass]="label_classes"
             >Delivery method</label
           >
           <select
             id="category"
             formControlName = "state"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes"
           >  
             <option *ngFor="let state of delivery" [ngValue]="state">{{state}}</option>
           </select>
@@ -78,7 +78,7 @@
       </div>
       <button
         *ngIf="!new_post && !payment_method"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+        [ngClass]="button_classes"
         routerLink="/cart"
       >
       Back to cart
@@ -86,7 +86,7 @@
       <button
         *ngIf="!new_post && !payment_method"
         type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+        [ngClass]="button_classes"
       >
         Continue
       </button>
@@ -96,13 +96,14 @@
     <form *ngIf="new_post" [formGroup]="formCity" (ngSubmit)="onSubmitCity()">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div class="sm:col-span-2" >
-          <label            
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label
+            @appearance            
+            [ngClass]="label_classes"
             >Choose city</label
           >
           <select            
             formControlName = "city"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes + select_classes_anim_left"
           >  
             <option *ngFor="let state of delivery_data.cities" [ngValue]="state">{{state}}</option>
           </select>
@@ -110,7 +111,7 @@
       </div>
     <button
       *ngIf="!city_chosen"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
       routerLink="/cart"
     >
     Back to cart
@@ -118,7 +119,7 @@
     <button
     *ngIf="!city_chosen"
       type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
     >
       Continue
     </button>
@@ -128,13 +129,14 @@
     <form *ngIf="city_chosen" [formGroup]="formPost" (ngSubmit)="onSubmitPost()">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div class="sm:col-span-2">
-          <label            
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label
+            @appearance            
+            [ngClass]="label_classes"
             >Choose endpoint</label
           >
           <select            
             formControlName = "endpoint"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes + select_classes_anim_left"
           >  
             <option *ngFor="let state of delivery_data.endpoints" [ngValue]="state">{{state}}</option>
           </select>
@@ -142,7 +144,7 @@
       </div>
     <button
       *ngIf="!endpoint_choosen"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
       routerLink="/cart"
     >
     Back to cart
@@ -150,7 +152,7 @@
     <button
     *ngIf="!endpoint_choosen"
       type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
     >
       Continue
     </button>
@@ -160,13 +162,14 @@
     <form *ngIf="payment_method" [formGroup]="formPayment" (ngSubmit)="onSubmitCreateOrder()">
       <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div class="sm:col-span-2">
-          <label            
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          <label
+            @appearance            
+            [ngClass]="label_classes"
             >Choose payment method</label
           >
           <select            
             formControlName = "payment"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            [ngClass]="select_classes + select_classes_anim_left"
           >  
             <option *ngFor="let state of payment_type" [ngValue]="state">{{state}}</option>
             <option *ngIf="new_post" [ngValue]="payment_type_post">{{payment_type_post}}</option>
@@ -174,14 +177,14 @@
         </div>
       </div>
     <button
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
       routerLink="/cart"
     >
       Back to cart
     </button>
     <button
       type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+      [ngClass]="button_classes"
     >
       Create order
     </button>

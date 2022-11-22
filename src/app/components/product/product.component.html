@@ -7,7 +7,7 @@
              <h3 class="text-base font-medium">
                  {{product.title | limit:20}}              
              </h3>                        
-             <div *ngIf="details">
+             <div id="description" *ngIf="details">
               <p class="mt-1 text-sm">{{product.description}}</p>
               <span>Rate: {{product.rating.rate | number: '1.1-2'}}</span>
              </div>
