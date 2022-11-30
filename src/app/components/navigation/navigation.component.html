@@ -42,14 +42,16 @@
               </button>
           </div>
           <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-              <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                  <li @appearance *ngFor="let link of links; let i=index;">
-                      <a [routerLink]="links_routes[i]" [ngClass]="getClasses()" aria-current="page">{{link}}</a>
-                  </li>
+              <ul @appearance class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">                
+                    <li><a [routerLink]="links_routes[0]" [ngClass]="getClasses()" aria-current="page">{{links[0]}}</a></li>
+                    <li><a [ngClass]="getClasses()" style="cursor: pointer" aria-current="page" (click)="subMenu()">{{links[1]}}</a></li>
+                    <li><a [routerLink]="links_routes[2]" [ngClass]="getClasses()" aria-current="page">{{links[2]}}</a></li>
+                    <li><a [routerLink]="links_routes[3]" [ngClass]="getClasses()" aria-current="page">{{links[3]}}</a></li>                 
               </ul>
           </div>
       </div>
   </nav>
+  <app-sub-nav-goods [ngClass]="getSubMenuClasses()"></app-sub-nav-goods>
 </header>
   
          

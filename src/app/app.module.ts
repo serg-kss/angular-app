@@ -30,6 +30,7 @@ import { GoodsComponent } from './admin/goods/goods.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubNavGoodsComponent } from './components/sub-nav-goods/sub-nav-goods.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminComponent,
     GoodsComponent,
     OrdersComponent,
-    UpdateProductComponent 
+    UpdateProductComponent,
+    SubNavGoodsComponent 
   ],
   imports: [
     BrowserModule,
