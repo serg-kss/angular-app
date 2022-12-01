@@ -31,6 +31,7 @@ import { OrdersComponent } from './admin/orders/orders.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubNavGoodsComponent } from './components/sub-nav-goods/sub-nav-goods.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { SubNavGoodsComponent } from './components/sub-nav-goods/sub-nav-goods.c
     GoodsComponent,
     OrdersComponent,
     UpdateProductComponent,
-    SubNavGoodsComponent 
+    SubNavGoodsComponent,
+    MainPageComponent 
   ],
   imports: [
     BrowserModule,

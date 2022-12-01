@@ -6,12 +6,14 @@ import { AuthComponent } from './admin/auth/auth.component';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AboutComponent } from './pages/about/about.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
 import { ProductFirstGuard } from './productFirst.guard';
 
 const routes: Routes = [
-  {path: '', component: ProductPageComponent},
+  {path: '', component: MainPageComponent},
+  {path: 'goods', component: ProductPageComponent},
   {path: 'about', component: AboutComponent},
   {path: 'single_product', component: SingleProductComponent, canActivate: [ProductFirstGuard]},
   {path: 'cart', component: CartDetailComponent, canActivate: [ProductFirstGuard]},

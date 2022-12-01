@@ -9,6 +9,7 @@ import { links_classes } from 'src/app/data/styles-data';
 export class SubNavGoodsComponent implements OnInit {
 
   links: string[] = ['IProdusts', 'Ifood', 'ICars']
+  routes: string[] = ['/goods', '/food', '/cars']
   links_classes: string = links_classes;
 
   constructor() { }

@@ -1,7 +1,7 @@
 <div class="bg-white  border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
    <ul class="flex justify-center">
-     <li class="mr-6" *ngFor="let link of links">
-       <a [ngClass]="links_classes" routerLink="#">{{link}}</a>
+     <li class="mr-6" *ngFor="let link of links; index as i">
+       <a [ngClass]="links_classes" [routerLink]="routes[i]">{{link}}</a>
      </li>
    </ul>
  </div>
