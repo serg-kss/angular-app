@@ -16,6 +16,8 @@ import { Delivery } from '../models/delivery';
 export class ProductService {
   constructor(private http: HttpClient, private errorService: ErrorService) {}
 
+  dark_mode: boolean = false;
+
   products: IProduct[] = [];
   product: IProduct;
   auth_token: string;

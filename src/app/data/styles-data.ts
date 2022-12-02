@@ -1,5 +1,4 @@
-
 export let button_classes: string = "mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2";
 export let select_classes: string = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
 export let label_classes: string = 'block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white';
-export let links_classes: string = "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-red-700 bg-gray-50 lg:hover:text-red-700 bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+export let links_classes: string = "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-red-700 bg-gray-50 lg:hover:text-red-700 bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700";

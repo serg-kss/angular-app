@@ -1,7 +1,7 @@
-<div class="bg-[url('src/assets/background1.jpg')]">
+<div [ngClass]="dark_mode? dark : light">
   
-<div class="container mx-auto ">
-  <app-navigation></app-navigation>
+<div class="container mx-auto">
+  <app-navigation (addEvent)="switchDark()"></app-navigation>
 </div>
 <div class="container mx-auto flex justify-center mt-5">
   <app-global-error></app-global-error>

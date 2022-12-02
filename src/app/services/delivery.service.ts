@@ -7,6 +7,7 @@ export class DeliveryService {
 
   cities: string[] = ['London', 'Dublin', 'Amsterdam', 'Odessa'];
   endpoints: string[] = ['#21', '#15', '#33'];
+  
 
   constructor() { }
 

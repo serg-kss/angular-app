@@ -1,5 +1,4 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -7,28 +6,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-ngOnInit(): void {
-  this.result()
-}
+export class AppComponent{
 
-department = [100,1,2,3,10,77]
+  dark_mode: boolean = false;
+  dark: string ="bg-[url('src/assets/background1.jpg')] dark";
+  light: string ="bg-[url('src/assets/background1.jpg')] light";
 
-
-maxNumber: number =0 ;
-
-
-result(){
-
-  for(let i = 0; i<this.department.length; i++){
-    //let number
-  
-    if (this.maxNumber < this.department[i]){
-      this.maxNumber = this.department[i];
+  switchDark() {
+    this.dark_mode = !this.dark_mode;
   }
-}
-
-}
-
 
 }
