@@ -88,9 +88,8 @@ export class CheckoutComponent {
         '  Units:' +
         this.cart.lines[i].quantity +
         ';' +
-        this.cart.lines[i].lineTotal;
+        this.cart.lines[i].lineTotal + ' ';
     }
-    this.goods = this.goods + this.cart.cartPrice + '; ';
 
     if (this.deliveries == this.delivery[0]) {
       this.payment_method = true;

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-
+ 
   dark_mode: boolean = false;
   dark: string ="bg-[url('src/assets/background1.jpg')] dark";
   light: string ="bg-[url('src/assets/background1.jpg')] light";
