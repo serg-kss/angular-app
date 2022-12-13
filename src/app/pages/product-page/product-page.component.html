@@ -1,15 +1,9 @@
 <div class="grid grid-cols-6 gap-2 justify-items-center">
   <div class="col-start-2 col-span-4">
     <h1 class="font-sans text-center animate__animated animate__flash">{{title | titlecase}}</h1>
+    <app-search-input [(searching)]="str"></app-search-input>
   </div>
-  <div class="col-start-2 col-span-4 w-1/2">
-    <input 
-    type="text" 
-    class="border rounded-lg py-2 px-4 w-full" 
-    placeholder="Filter objects..."
-    [(ngModel)]="term"
-  >
-  </div> 
+  
 </div>
 
 <div *ngIf="modalService.itemAdd$ | async" 
@@ -37,12 +31,11 @@
     </div>
 </div>
 
-
 <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ">
  <div class="mt-1 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8" 
  *ngIf="productService.products">
     <app-product 
-     *ngFor="let counter of productService.products | filter:term" 
+     *ngFor="let counter of productService.products | filter:str" 
      [product]="counter" >
     </app-product>
  </div>

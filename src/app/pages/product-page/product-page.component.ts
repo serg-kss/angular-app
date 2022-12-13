@@ -10,10 +10,9 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductPageComponent implements OnInit {
 
  
-  title = 'Searching by name of the product:'
-  loading = false
-  //products$: Observable<IProduct[]>
-  term = ''
+  title = 'Searching by name of the product:';
+  loading = false;
+  str:string = '';
   
 
   constructor(
@@ -22,11 +21,10 @@ export class ProductPageComponent implements OnInit {
     ){}
 
   ngOnInit(): void {
-    this.loading = true
+    this.loading = true;
     this.productService.getAll().subscribe(() =>{
-      this.loading = false
-      
-    })
+      this.loading = false;     
+    });
    
   }
 

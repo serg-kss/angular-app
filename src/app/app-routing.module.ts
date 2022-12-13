@@ -1,3 +1,5 @@
+import { TeamComponent } from './pages/team/team.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin/admin.component';
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: '', component: MainPageComponent},
   {path: 'goods', component: ProductPageComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'contact-us', component: ContactUsComponent},
+  {path: 'team', component: TeamComponent},
   {path: 'single_product', component: SingleProductComponent, canActivate: [ProductFirstGuard]},
   {path: 'cart', component: CartDetailComponent, canActivate: [ProductFirstGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [ProductFirstGuard]},

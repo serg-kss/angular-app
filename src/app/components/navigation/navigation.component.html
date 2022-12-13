@@ -1,5 +1,5 @@
 <header>
-  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-zinc-900">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a routerLink="/" class="flex items-center">
               <img src="../../../assets/angular-icon.svg" class="animate__animated animate__bounceInRight mr-3 h-6 sm:h-9" alt="Angular Logo" />
@@ -49,7 +49,8 @@
                     <li><a [routerLink]="links_routes[0]" [ngClass]="getClasses()" aria-current="page">{{links[0]}}</a></li>
                     <li><a [ngClass]="getClasses()" style="cursor: pointer" aria-current="page" (click)="subMenu()">{{links[1]}}</a></li>
                     <li><a [routerLink]="links_routes[2]" [ngClass]="getClasses()" aria-current="page">{{links[2]}}</a></li>
-                    <li><a [routerLink]="links_routes[3]" [ngClass]="getClasses()" aria-current="page">{{links[3]}}</a></li>                 
+                    <li><a [routerLink]="links_routes[3]" [ngClass]="getClasses()" aria-current="page">{{links[3]}}</a></li>
+                    <li><a [routerLink]="links_routes[4]" [ngClass]="getClasses()" aria-current="page">{{links[4]}}</a></li>                  
               </ul>
           </div>
       </div>

@@ -13,6 +13,7 @@ export class ProductComponent{
    details = false;
    show_details = 'Show details';
    hide_details = 'Hide details';
+   route = '/single_product';
 
    constructor(
       public productId: ProductIdService, 

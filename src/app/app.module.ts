@@ -32,6 +32,12 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubNavGoodsComponent } from './components/sub-nav-goods/sub-nav-goods.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ECarsComponent } from './pages/e-cars/e-cars.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { TeamComponent } from './pages/team/team.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 
 @NgModule({
@@ -58,7 +64,13 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     OrdersComponent,
     UpdateProductComponent,
     SubNavGoodsComponent,
-    MainPageComponent 
+    MainPageComponent,
+    ECarsComponent,
+    CarouselComponent,
+    ContactUsFormComponent,
+    ContactUsComponent,
+    TeamComponent,
+    SearchInputComponent 
   ],
   imports: [
     BrowserModule,
