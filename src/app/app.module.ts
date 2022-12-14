@@ -38,6 +38,8 @@ import { ContactUsFormComponent } from './components/contact-us-form/contact-us-
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TeamComponent } from './pages/team/team.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     ContactUsFormComponent,
     ContactUsComponent,
     TeamComponent,
-    SearchInputComponent 
+    SearchInputComponent,
+    BlogComponent,
+    LoadingComponent 
   ],
   imports: [
     BrowserModule,
