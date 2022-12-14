@@ -19,6 +19,9 @@ import { ProductService } from 'src/app/services/product.service';
   animations: [appearance],
 })
 export class CheckoutComponent {
+
+  str_1: string = 'Thanks for placing your order.';
+  str_2: string = "We'll ship your goods as soon as possible.";
   orderSent: boolean = false;
   submitted: boolean = false;
   delivery: string[] = ['From shop', 'New Post delivery'];
