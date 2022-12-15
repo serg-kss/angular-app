@@ -1,3 +1,4 @@
+import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { TeamComponent } from './pages/team/team.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'cart', component: CartDetailComponent, canActivate: [ProductFirstGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [ProductFirstGuard]},
   {path: 'auth', component: AuthComponent},
+  {path: 'sign-in', component: SignInComponent},
   {path: 'admin', component: AdminComponent},
   {path: '**', redirectTo: ''} 
 ];

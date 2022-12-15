@@ -40,6 +40,7 @@ import { TeamComponent } from './pages/team/team.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { SignInComponent } from './admin/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     TeamComponent,
     SearchInputComponent,
     BlogComponent,
-    LoadingComponent 
+    LoadingComponent,
+    SignInComponent 
   ],
   imports: [
     BrowserModule,
