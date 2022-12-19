@@ -41,6 +41,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { BlogComponent } from './pages/blog/blog.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
+import { Error500Component } from './components/error500/error500.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
     SearchInputComponent,
     BlogComponent,
     LoadingComponent,
-    SignInComponent 
+    SignInComponent,
+    Error500Component 
   ],
   imports: [
     BrowserModule,

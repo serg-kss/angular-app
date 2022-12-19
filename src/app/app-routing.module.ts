@@ -1,3 +1,4 @@
+import { Error500Component } from './components/error500/error500.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { TeamComponent } from './pages/team/team.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'error500', component: Error500Component},
   {path: '**', redirectTo: ''} 
 ];
 

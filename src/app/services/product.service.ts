@@ -100,14 +100,6 @@ export class ProductService {
       .then((json) => console.log(json));
   }
 
-  /* saveOrder(order: Order): Observable<Order> {
-      //return Observable.from([order]);
-      console.log(JSON.stringify(order));
-      return new Observable(observer => {
-         observer.next(order);
-      })
-   }*/
-
   getAllOrders(): Observable<Delivery[]> {
     return this.http
       .get<Delivery[]>('http://localhost:8080/api/orders', {
@@ -130,15 +122,6 @@ export class ProductService {
       catchError(this.errorHandler.bind(this))
     );   
   }
- /* saveOrder(order: Delivery){
-    fetch('http://localhost:8080/api/create-order', {
-      method: 'POST',
-      body: JSON.stringify(order),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json));
-  }*/
-
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message);
