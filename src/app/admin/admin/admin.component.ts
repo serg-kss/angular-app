@@ -12,7 +12,6 @@ export class AdminComponent{
 
   constructor() { }
 
-
   change_status(){
     this.products_field = !this.products_field;
     this.orders_field = !this.orders_field;
@@ -20,13 +19,14 @@ export class AdminComponent{
 
   getClasses_1(): string {
     if (this.products_field){
-      return "bg-teal-500 text-white";
-    } else return "text-grey-600 hover:text-teal-600 border-teal-600";
+      return "bg-zinc-900 text-white";
+    } else return "text-zinc-900 hover:text-zinc-900 border-zinc-900";
   }
+
   getClasses_2(): string {
     if (this.orders_field){
-      return "bg-teal-500 text-white";
-    } else return "text-grey-600 hover:text-teal-600 border-teal-600";
+      return "bg-zinc-900 text-white";
+    } else return "text-zinc-900 hover:text-zinc-900 border-zinc-900";
   }
 
 }

@@ -42,6 +42,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { Error500Component } from './components/error500/error500.component';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { Error500Component } from './components/error500/error500.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule    
+    BrowserAnimationsModule,
+    NgxUsefulSwiperModule    
   ],
   providers: [Cart, ProductFirstGuard, OrderRepository, Order, AuthService,UpdateProductComponent],
   bootstrap: [AppComponent]

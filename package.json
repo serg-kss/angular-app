@@ -21,7 +21,9 @@
     "animate.css": "^4.1.1",
     "flowbite": "^1.5.3",
     "flowbite-angular": "^0.0.1",
+    "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~7.5.0",
+    "swiper": "^6.8.4",
     "tslib": "^2.3.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"

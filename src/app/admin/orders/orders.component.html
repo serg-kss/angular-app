@@ -1,6 +1,6 @@
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-    <table class="w-1/2 text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+    <table class="w-1/2 text-sm text-left text-zinc-900 dark:text-gray-400">
+        <thead class="text-xs uppercase dark:text-white">
             <tr>
                 <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
                     Orders amount
@@ -11,29 +11,29 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <td class="py-4 px-6">
+            <tr class="border-b border-zinc-900 dark:border-gray-700">
+                <td class="py-4 px-6 text-3xl">
                     {{orders_amount}}
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6 text-3xl">
                     {{total_amount_EUR | currency:'EUR'}}
                 </td>
             </tr>
         </tbody>
     </table>
    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-       <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+       <thead class="text-xs text-gray-700 uppercase dark:text-white">
            <tr>
-               <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+               <th scope="col" class="py-3 px-6">
                    Order number
                </th>
-               <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+               <th scope="col" class="py-3 px-6">
                    Customer Name
                </th>
                <th scope="col" class="py-3 px-6">
                    Phone
                </th>
-               <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
+               <th scope="col" class="py-3 px-6">
                    Category
                </th>
                <th scope="col" class="py-3 px-6">
@@ -49,19 +49,19 @@
                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                    {{item.order_num}}
                </th>
-               <td class="py-4 px-6">
+               <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                    {{item.name}}
                </td>
                <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                    {{item.phone}}
                </td>
-               <td class="py-4 px-6">
+               <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                    {{item.post_data}}
                </td>
-               <td class="py-4 px-6">
+               <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
                    {{item.goods}}
                </td>
-               <td class="py-4 px-6">
+               <td class="py-4 px-6 text-xl bg-gray-50 dark:bg-gray-800">
                    {{item.amount | currency:'EUR'}}
                </td>
            </tr>           

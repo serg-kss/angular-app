@@ -11,17 +11,15 @@
            type="button" 
            (click)="change_status()">Orders</button>
        </li>
-
    </ul>
 </div>
 <div>
-   <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800"
+   <div class="p-4 mb-10 bg-gray-50 rounded-lg dark:bg-gray-800"
         *ngIf="products_field">
             <app-goods></app-goods>  
    </div>
-   <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" 
+   <div class="p-4 mb-10 bg-gray-50 rounded-lg dark:bg-gray-800" 
         *ngIf="orders_field">
             <app-orders></app-orders>
-   </div>
-   
+   </div>   
 </div>
