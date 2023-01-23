@@ -43,6 +43,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { Error500Component } from './components/error500/error500.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgxUsefulSwiperModule    
+    NgxUsefulSwiperModule,
+    ImageCropperModule    
   ],
   providers: [Cart, ProductFirstGuard, OrderRepository, Order, AuthService,UpdateProductComponent],
   bootstrap: [AppComponent]

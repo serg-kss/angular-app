@@ -65,7 +65,7 @@ export class CheckoutComponent {
       Validators.minLength(6),
       Validators.maxLength(50),
     ]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     state: new FormControl('', [Validators.required]),
   });
 

@@ -21,6 +21,7 @@
     "animate.css": "^4.1.1",
     "flowbite": "^1.5.3",
     "flowbite-angular": "^0.0.1",
+    "ngx-image-cropper": "^6.3.2",
     "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~7.5.0",
     "swiper": "^6.8.4",

@@ -1,4 +1,17 @@
-<div><h1 class="text-3xl font-sans text-center">Admin Panel:</h1></div>
+<div>
+    <h1 class="text-3xl font-sans text-center">Admin Panel:</h1>
+</div>
+<div>
+    <input 
+        class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        type="file" 
+        (change)="onFileChange($event)" />
+    <button
+        class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        (click)="upload()">
+        Upload
+    </button>
+</div>
 <div class="mb-4 border-b border-gray-200 mt-5">
    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
        <li class="mr-2">

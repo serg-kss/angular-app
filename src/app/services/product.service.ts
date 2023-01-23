@@ -9,6 +9,7 @@ import { catchError, retry, tap, throwError, Observable } from 'rxjs';
 import { ErrorService } from './error.service';
 import { AuthToken } from '../models/token';
 import { Delivery } from '../models/delivery';
+import { UploadPic } from '../models/picture';
 
 @Injectable({
   providedIn: 'root',
@@ -72,6 +73,10 @@ export class ProductService {
     return this.http
       .post<IProduct>('https://fakestoreapi.com/products', product)
       .pipe(tap((response) => this.products.push(response)));
+  }
+
+  uploadPic(pic:UploadPic): Observable<UploadPic> {
+    return this.http.post<UploadPic>('http://localhost:8080/api/upload_pic', pic);
   }
 
   update(
