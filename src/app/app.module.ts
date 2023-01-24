@@ -44,6 +44,7 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { Error500Component } from './components/error500/error500.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { ToastComponent } from './components/toast/toast.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     BlogComponent,
     LoadingComponent,
     SignInComponent,
-    Error500Component 
+    Error500Component,
+    ToastComponent 
   ],
   imports: [
     BrowserModule,

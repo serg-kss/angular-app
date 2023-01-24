@@ -13,6 +13,8 @@ export class AdminComponent{
   orders_field: boolean = false;
   imageSrc: string;
   pic: UploadPic;
+  show_message: boolean = false;
+  text_message: string;
 
   constructor(public sendPic:ProductService) { }
 
@@ -52,7 +54,18 @@ export class AdminComponent{
     console.log(this.imageSrc)
     this.sendPic
       .uploadPic({pic:this.imageSrc})
-      .subscribe((response)=>console.log(response))
+      .subscribe((response)=>{
+        if(response.pic == 'Ok'){
+          this.text_message = 'Pic Uploaded to DB';
+          this.show_message = true;
+          setTimeout(() => this.show_message = false, 3000);
+        }else{
+          this.text_message = 'Error';
+          this.show_message = true;
+          setTimeout(() => this.show_message = false, 3000);
+
+        }
+      })
   }
 
 }
