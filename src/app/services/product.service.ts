@@ -79,6 +79,19 @@ export class ProductService {
     return this.http.post<UploadPic>('http://localhost:8080/api/upload_pic', pic);
   }
 
+  getAllPictures(): Observable<UploadPic[]> {
+    return this.http
+      .get<UploadPic[]>('http://localhost:8080/api/get_pic', {
+        params: new HttpParams({
+          fromObject: { limit: 1000 },
+        }),
+      })
+      .pipe(
+        retry(2),
+        catchError(this.errorHandler.bind(this))
+      );
+  } 
+
   update(
     id: number,
     data: {

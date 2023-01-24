@@ -15,6 +15,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
 import { ProductFirstGuard } from './productFirst.guard';
+import { TestsComponent } from './components/tests/tests.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'error500', component: Error500Component},
+  {path: 'tests', component: TestsComponent},
   {path: '**', redirectTo: ''} 
 ];
 

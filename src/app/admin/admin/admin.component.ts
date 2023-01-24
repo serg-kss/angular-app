@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UploadPic } from 'src/app/models/picture';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class AdminComponent{
   products_field: boolean = true;
   orders_field: boolean = false;
   imageSrc: string;
-  pic: UploadPic;
   show_message: boolean = false;
   text_message: string;
 
@@ -51,7 +49,6 @@ export class AdminComponent{
   }
 
   upload(){
-    console.log(this.imageSrc)
     this.sendPic
       .uploadPic({pic:this.imageSrc})
       .subscribe((response)=>{
@@ -63,9 +60,7 @@ export class AdminComponent{
           this.text_message = 'Error';
           this.show_message = true;
           setTimeout(() => this.show_message = false, 3000);
-
         }
       })
   }
-
 }
