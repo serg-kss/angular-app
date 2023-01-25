@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class AdminComponent{
   imageSrc: string;
   show_message: boolean = false;
   text_message: string;
+  @ViewChild('someInput', {static: false}) someInput: ElementRef;
+  counter: number = 0;
 
   constructor(public sendPic:ProductService) { }
 
@@ -39,28 +41,38 @@ export class AdminComponent{
 
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
-      reader.readAsDataURL(file);
-     
+      this.counter = event.target.files.length;
+      console.log(this.counter);
+      reader.readAsDataURL(file);     
       reader.onload = () => {    
         this.imageSrc = reader.result as string;   
       };
-
     }
   }
 
+  message(){
+    this.show_message = true;
+    this.counter == 0;
+    this.someInput.nativeElement.value = null;
+    setTimeout(() => this.show_message = false, 3000);
+  }
+  
   upload(){
-    this.sendPic
+    if(this.counter != 0){
+      this.sendPic
       .uploadPic({pic:this.imageSrc})
       .subscribe((response)=>{
         if(response.pic == 'Ok'){
           this.text_message = 'Pic Uploaded to DB';
-          this.show_message = true;
-          setTimeout(() => this.show_message = false, 3000);
+          this.message();
         }else{
           this.text_message = 'Error';
-          this.show_message = true;
-          setTimeout(() => this.show_message = false, 3000);
+          this.message();
         }
       })
+    }else if(this.counter == 0){
+      this.text_message = 'Choose a file!';
+      this.message();
+    }   
   }
 }
